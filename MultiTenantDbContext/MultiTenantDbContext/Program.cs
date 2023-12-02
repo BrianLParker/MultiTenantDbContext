@@ -57,23 +57,6 @@ namespace MultiTenantDbContext
                 options.UseModel(TenantDbContextModel.Instance);
             }, ServiceLifetime.Scoped);
 
-            builder.Services.AddDbContextFactory<TenantDbContext>(async (services, options) =>
-            {
-                string? tenant;
-                try
-                {
-                    var connectionString = LocalConfiguration.ConnectionStrings["TenantConnection"];
-                    ITenantService tenantService = services.GetRequiredService<ITenantService>();
-                    tenant = await tenantService.GetTenantNameAsync();
-                }
-                catch
-                {
-                    tenant = "Default";
-                }
-                var tenantConnectionString = string.Format(connectionString, tenant);
-                options.UseSqlServer(tenantConnectionString);
-            }, ServiceLifetime.Scoped);
-
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
