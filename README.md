@@ -1,5 +1,6 @@
 # MultiTenantDbContext
 
+How I generated the Migrations and Optimizations
 `ApplicationDbContext`
 ```
 Add-Migration -Context ApplicationDbContext CreateInitialIdentitySchema -OutputDir Data/Migrations/IdentityContext
@@ -12,11 +13,14 @@ Add-Migration -Context TenantDbContext CreateInitialTenantSchema -OutputDir Data
 Optimize-DbContext -Context TenantDbContext -OutputDir Data/Optimizations/TenantContext
 ```
 
+
+This will create ApplicationDbContext for all users. 
 ```
 Update-Database -Context ApplicationDbContext
 ```
 
 There is no point doing this for tenant database as it has a dynamic connection string.
+When the user navigates to the Tenant Data the service will create the Tenant Database if not initialized.
 
 `appsettings.json` Will appear on Register screen and become a claim for the user.
 ```js
@@ -27,3 +31,4 @@ There is no point doing this for tenant database as it has a dynamic connection 
   ],
 
 ```
+Note: This string will also become part of the connection string for the database add more string here will add more tenants

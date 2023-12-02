@@ -15,13 +15,17 @@ namespace MultiTenantDbContext.Services.Tenants
         public async ValueTask<string?> GetTenantNameAsync()
         {
             AuthenticationState authenticationState = await this.authenticationStateProvider.GetAuthenticationStateAsync();
-            if (authenticationState == null) throw new InvalidOperationException();
-            if (!(authenticationState.User?.Identity?.IsAuthenticated ?? false)) throw new InvalidOperationException();
-            ClaimsPrincipal claimsPrincipal = authenticationState.User;
-            return claimsPrincipal.FindFirstValue(claimType: "tenant");
+            Validate(authenticationState);
+            return authenticationState.User.FindFirstValue(claimType: "tenant");
         }
 
         public string GetTenantConnectionString(string tenant) =>
             string.Format(this.localConfiguration.ConnectionStrings[key: "TenantConnection"], tenant);
+
+        private static void Validate(AuthenticationState authenticationState)
+        {
+            if (authenticationState == null) throw new InvalidOperationException("AuthenticationState null");
+            if (!(authenticationState.User?.Identity?.IsAuthenticated ?? false)) throw new InvalidOperationException("This context should only be used in a Authenticated state.");
+        }
     }
 }

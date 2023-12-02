@@ -16,7 +16,7 @@ namespace MultiTenantDbContext
         {
             var userId = users.GetUserId(principal)!;
             var user = await users.FindByIdAsync(userId);
-           // if (user == null) { return null; }
+            // if (user == null) { return null; }
             var tenantId = user!.TenantId;
             ClaimsIdentity claimsIdentity = new ClaimsIdentity();
             var claimType = "tenant";

@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿// Copyright (c) 2023, Brian Parker. All Rights Reserved.
+// 20231202070251_CreateInitialTenantSchema.cs licensed under the MIT License.
+
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 

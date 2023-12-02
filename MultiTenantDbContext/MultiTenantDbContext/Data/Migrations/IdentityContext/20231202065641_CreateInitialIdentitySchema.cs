@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright (c) 2023, Brian Parker. All Rights Reserved.
+// 20231202065641_CreateInitialIdentitySchema.cs licensed under the MIT License.
+
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
