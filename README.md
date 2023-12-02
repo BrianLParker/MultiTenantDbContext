@@ -1,13 +1,14 @@
 # MultiTenantDbContext
 
 How I generated the Migrations and Optimizations
+
 `ApplicationDbContext`
 ```
 Add-Migration -Context ApplicationDbContext CreateInitialIdentitySchema -OutputDir Data/Migrations/IdentityContext
 Optimize-DbContext -Context ApplicationDbContext -OutputDir Data/Optimizations/IdentityContext
 ```
 
-`TenantDbContext` [Per Tenant]
+`TenantDbContext`
 ```
 Add-Migration -Context TenantDbContext CreateInitialTenantSchema -OutputDir Data/Migrations/TenantContext
 Optimize-DbContext -Context TenantDbContext -OutputDir Data/Optimizations/TenantContext
