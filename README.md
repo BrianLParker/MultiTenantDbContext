@@ -22,7 +22,7 @@ Update-Database -Context ApplicationDbContext
 There is no point doing this for tenant database as it has a dynamic connection string.
 When the user navigates to the Tenant Data the service will create the Tenant Database if not initialized.
 
-`appsettings.json` Will appear on Register screen and become a claim for the user.
+`appsettings.json`
 ```js
   "Tenants": [
     "TenantA",
@@ -31,4 +31,8 @@ When the user navigates to the Tenant Data the service will create the Tenant Da
   ],
 
 ```
-Note: This string will also become part of the connection string for the database add more string here will add more tenants
+These strings appear on Register screen and become a claim for the user.
+
+The selected string will also become part of the connection string for the database.
+
+Adding more strings here will add more tenants.
