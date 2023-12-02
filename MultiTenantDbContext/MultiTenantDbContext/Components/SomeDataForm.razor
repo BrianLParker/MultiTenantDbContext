@@ -41,7 +41,7 @@
     {
         public int Id { get; set; }
 
-        [MaxLength(length: 450)]
+        [Required, MaxLength(length: 450)]
         public required string Name { get; set; }
     }
 }
