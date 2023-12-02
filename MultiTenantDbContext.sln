@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTenantDbContext", "MultiTenantDbContext\MultiTenantDbContext\MultiTenantDbContext.csproj", "{07B1E40F-D7CB-4B6E-94F4-CFFE3E62BE09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiTenantDbContext", "MultiTenantDbContext\MultiTenantDbContext\MultiTenantDbContext.csproj", "{07B1E40F-D7CB-4B6E-94F4-CFFE3E62BE09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTenantDbContext.Client", "MultiTenantDbContext\MultiTenantDbContext.Client\MultiTenantDbContext.Client.csproj", "{56B7A74D-4B84-4568-9234-45E9B212F106}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiTenantDbContext.Client", "MultiTenantDbContext\MultiTenantDbContext.Client\MultiTenantDbContext.Client.csproj", "{56B7A74D-4B84-4568-9234-45E9B212F106}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77A5C4F3-597E-483A-AD9B-9C72470F8225}"
 	ProjectSection(SolutionItems) = preProject

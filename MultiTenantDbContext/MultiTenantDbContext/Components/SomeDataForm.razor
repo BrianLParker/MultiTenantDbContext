@@ -1,0 +1,47 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using System.Text
+@* @using System.Text.Encodings.Web
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.WebUtilities *@
+@using MultiTenantDbContext.Data
+@using MultiTenantDbContext.Models
+@using MultiTenantDbContext.Services.TenantItems
+
+@inject ITenantItemService ItemService
+@inject NavigationManager Navigation
+
+<div class="row">
+    <div class="col-md-4">
+        <EditForm Model="Input" method="post" OnValidSubmit="CreateItem" FormName="createitem">
+            <DataAnnotationsValidator />
+            <h2>Create a new item.</h2>
+            <hr />
+            <ValidationSummary class="text-danger" role="alert" />
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="Input.Name" class="form-control" autocomplete="name" aria-required="true" placeholder="name" />
+                <label for="email">Name</label>
+                <ValidationMessage For="() => Input.Name" class="text-danger" />
+            </div>
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private InputModel Input { get; set; } = new() { Name = string.Empty };
+
+    private async Task CreateItem()
+    {
+        await ItemService.AddItemAsync(new SomeData { Name = Input.Name });
+        Navigation.NavigateTo(Navigation.Uri);
+    }
+
+    private sealed class InputModel
+    {
+        public int Id { get; set; }
+
+        [MaxLength(length: 450)]
+        public required string Name { get; set; }
+    }
+}

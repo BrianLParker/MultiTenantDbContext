@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using MultiTenantDbContext.Client.Pages;
+using MultiTenantDbContext.Client.Views.Pages;
 using MultiTenantDbContext.Components;
 using MultiTenantDbContext.Components.Account;
 using MultiTenantDbContext.Data;

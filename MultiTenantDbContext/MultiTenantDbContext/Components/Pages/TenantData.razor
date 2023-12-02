@@ -2,6 +2,7 @@
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.EntityFrameworkCore
 @using MultiTenantDbContext.Data
+@using MultiTenantDbContext.Models
 @using MultiTenantDbContext.Services.TenantItems
 @using MultiTenantDbContext.Services.Tenants
 
@@ -37,18 +38,16 @@ else
         </tbody>
     </table>
 }
-
+<SomeDataForm />
 @code {
     private MultiTenantDbContext.Models.SomeData[]? items;
+
     [Inject]
     private ITenantItemService TenantItems { get; set; } = default!;
 
-
     protected override async Task OnInitializedAsync()
     {
-        this.items = (await TenantItems.QueryItemsAsync()).ToArray();
-
+        IQueryable<SomeData> items = await TenantItems.QueryItemsAsync();
+        this.items = items.ToArray();
     }
-
-  
 }
