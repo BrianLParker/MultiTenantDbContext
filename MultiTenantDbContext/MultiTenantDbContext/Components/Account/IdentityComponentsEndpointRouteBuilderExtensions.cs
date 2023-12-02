@@ -1,3 +1,6 @@
+// Copyright (c) 2023, Brian Parker. All Rights Reserved.
+// IdentityComponentsEndpointRouteBuilderExtensions.cs licensed under the MIT License.
+
 using System.Security.Claims;
 using System.Text.Json;
 using Microsoft.AspNetCore.Authentication;

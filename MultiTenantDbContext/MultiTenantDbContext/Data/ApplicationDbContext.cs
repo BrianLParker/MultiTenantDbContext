@@ -1,4 +1,6 @@
-using System.ComponentModel.DataAnnotations;
+// Copyright (c) 2023, Brian Parker. All Rights Reserved.
+// ApplicationDbContext.cs licensed under the MIT License.
+
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,19 +8,5 @@ namespace MultiTenantDbContext.Data
 {
     public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser>(options)
     {
-    }
-
-    public class TenantDbContext(DbContextOptions<TenantDbContext> options) : DbContext
-    {
-
-    }
-
-    public class SomeData
-    {
-        [Key]
-        public int Id { get; set; }
-
-        [MaxLength(length: 450)]
-        public required string Name { get; set; }
     }
 }

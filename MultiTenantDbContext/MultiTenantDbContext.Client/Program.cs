@@ -1,3 +1,6 @@
+// Copyright (c) 2023, Brian Parker. All Rights Reserved.
+// Program.cs licensed under the MIT License.
+
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MultiTenantDbContext.Client;

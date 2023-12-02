@@ -1,3 +1,6 @@
+// Copyright (c) 2023, Brian Parker. All Rights Reserved.
+// PersistentAuthenticationStateProvider.cs licensed under the MIT License.
+
 using System.Security.Claims;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -29,7 +32,8 @@ namespace MultiTenantDbContext.Client
             Claim[] claims = [
                 new Claim(ClaimTypes.NameIdentifier, userInfo.UserId),
                 new Claim(ClaimTypes.Name, userInfo.Email),
-                new Claim(ClaimTypes.Email, userInfo.Email)];
+                new Claim(ClaimTypes.Email, userInfo.Email),
+                new Claim("tenant", userInfo.Tenant)];
 
             authenticationStateTask = Task.FromResult(
                 new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity(claims,

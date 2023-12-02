@@ -1,3 +1,6 @@
+// Copyright (c) 2023, Brian Parker. All Rights Reserved.
+// IdentityRedirectManager.cs licensed under the MIT License.
+
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Components;
 

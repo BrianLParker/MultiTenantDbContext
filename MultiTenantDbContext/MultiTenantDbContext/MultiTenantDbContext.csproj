@@ -16,4 +16,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
+    <Folder Include="Data\Migrations\IdentityContext\" />
+    <Folder Include="Data\Migrations\TenantContext\" />
+  </ItemGroup>
+
 </Project>

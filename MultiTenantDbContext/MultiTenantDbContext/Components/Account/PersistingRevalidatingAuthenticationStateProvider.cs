@@ -1,3 +1,6 @@
+// Copyright (c) 2023, Brian Parker. All Rights Reserved.
+// PersistingRevalidatingAuthenticationStateProvider.cs licensed under the MIT License.
+
 using System.Diagnostics;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Components;
@@ -69,10 +72,7 @@ namespace MultiTenantDbContext.Components.Account
             }
         }
 
-        private void OnAuthenticationStateChanged(Task<AuthenticationState> task)
-        {
-            authenticationStateTask = task;
-        }
+        private void OnAuthenticationStateChanged(Task<AuthenticationState> task) => authenticationStateTask = task;
 
         private async Task OnPersistingAsync()
         {
@@ -88,13 +88,14 @@ namespace MultiTenantDbContext.Components.Account
             {
                 var userId = principal.FindFirst(options.ClaimsIdentity.UserIdClaimType)?.Value;
                 var email = principal.FindFirst(options.ClaimsIdentity.EmailClaimType)?.Value;
-
+                var tenant = principal.FindFirstValue("tenant")!;
                 if (userId != null && email != null)
                 {
                     state.PersistAsJson(nameof(UserInfo), new UserInfo
                     {
                         UserId = userId,
                         Email = email,
+                        Tenant = tenant
                     });
                 }
             }

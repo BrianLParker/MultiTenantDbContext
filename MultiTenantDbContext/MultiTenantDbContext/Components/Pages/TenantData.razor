@@ -1,0 +1,54 @@
+﻿@page "/tenantData"
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.EntityFrameworkCore
+@using MultiTenantDbContext.Data
+@using MultiTenantDbContext.Services.TenantItems
+@using MultiTenantDbContext.Services.Tenants
+
+@attribute [StreamRendering]
+@attribute [Authorize]
+<PageTitle>Weather</PageTitle>
+
+<h1>Data</h1>
+
+<p>This component demonstrates showing tenant data.</p>
+
+@if (items == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in items)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private MultiTenantDbContext.Models.SomeData[]? items;
+    [Inject]
+    private ITenantItemService TenantItems { get; set; } = default!;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        this.items = (await TenantItems.QueryItemsAsync()).ToArray();
+
+    }
+
+  
+}

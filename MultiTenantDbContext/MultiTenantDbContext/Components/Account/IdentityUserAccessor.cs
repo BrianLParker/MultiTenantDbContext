@@ -1,3 +1,6 @@
+// Copyright (c) 2023, Brian Parker. All Rights Reserved.
+// IdentityUserAccessor.cs licensed under the MIT License.
+
 using Microsoft.AspNetCore.Identity;
 using MultiTenantDbContext.Data;
 
